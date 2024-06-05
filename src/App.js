@@ -11,6 +11,7 @@ export default function App() {
         <a
           href="https://github.com/Nadie0816/react-weather-app.git"
           target="_blank"
+          rel="noreferrer"
         >
           open-sourced on Github
         </a>
