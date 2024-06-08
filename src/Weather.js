@@ -63,6 +63,6 @@ export default function Weather(props) {
       </div>
     );
   } else {
-    return <div>search();</div>;
+    return <div>{search()}</div>;
   }
 }
