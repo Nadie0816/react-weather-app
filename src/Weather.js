@@ -3,11 +3,11 @@ import React, { useState } from "react";
 import "./Weather.css";
 
 export default function Weather(props) {
-  const [weatherData, setWeatherData] = useState({ ready: false });
+  const [ready, setReady] = useState(false);
+  const [weatherData, setWeatherData] = useState({});
   function handleResponse(response) {
     console.log(response.data);
     setWeatherData({
-      ready: true,
       temperature: response.data.main.temp,
       humidity: response.data.main.humidity,
       date: "Wednesday 07:00",
@@ -16,9 +16,10 @@ export default function Weather(props) {
       wind: response.data.wind.speed,
       city: response.data.name,
     });
+    setReady(true);
   }
 
-  if (weatherData.ready) {
+  if (ready) {
     return (
       <div className="Weather">
         <form>
