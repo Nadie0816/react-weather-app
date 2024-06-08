@@ -34,10 +34,9 @@ export default function Weather() {
             <img
               src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
               alt="Mostly Cloudy"
-              className="float-left"
             />
             <div className="float-left">
-              <span className="temperagure">6</span>
+              <span className="temperature">6</span>
               <span className="unit">°C</span>
             </div>
           </div>
