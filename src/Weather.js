@@ -4,12 +4,12 @@ import "./Weather.css";
 import WeatherInfo from "./WeatherInfo";
 
 export default function Weather(props) {
-  const [ready, setReady] = useState(false);
-  const [weatherData, setWeatherData] = useState();
+  const [weatherData, setWeatherData] = useState({ ready: false });
   const [city, setCity] = useState(props.defaultCity);
 
   function handleResponse(response) {
     setWeatherData({
+      ready: true,
       temperature: response.data.main.temp,
       humidity: response.data.main.humidity,
       date: new Date(),
@@ -18,7 +18,15 @@ export default function Weather(props) {
       wind: response.data.wind.speed,
       city: response.data.name,
     });
-    setReady(true);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    search();
+  }
+
+  function handleCityChange(event) {
+    setCity(event.target.value);
   }
 
   function search() {
@@ -27,17 +35,7 @@ export default function Weather(props) {
     axios.get(apiUrl).then(handleResponse);
   }
 
-  function handleSubmit(event) {
-    event.preventDefault();
-
-    search();
-  }
-
-  function handleCityChange(event) {
-    setCity(event.target.value);
-  }
-
-  if (ready) {
+  if (weatherData.ready) {
     return (
       <div className="Weather">
         <form onSubmit={handleSubmit}>
@@ -65,6 +63,6 @@ export default function Weather(props) {
     );
   } else {
     search();
-    return "Loading";
+    return "Loading...";
   }
 }
