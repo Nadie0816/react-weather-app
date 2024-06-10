@@ -4,12 +4,12 @@ import "./Weather.css";
 import WeatherInfo from "./WeatherInfo";
 
 export default function Weather(props) {
-  const [weatherData, setWeatherData] = useState({ ready: false });
+  const [ready, setReady] = useState(false);
+  const [weatherData, setWeatherData] = useState();
   const [city, setCity] = useState(props.defaultCity);
 
   function handleResponse(response) {
     setWeatherData({
-      ready: true,
       temperature: response.data.main.temp,
       humidity: response.data.main.humidity,
       date: new Date(),
@@ -18,6 +18,7 @@ export default function Weather(props) {
       wind: response.data.wind.speed,
       city: response.data.name,
     });
+    setReady(true);
   }
 
   function search() {
@@ -28,6 +29,7 @@ export default function Weather(props) {
 
   function handleSubmit(event) {
     event.preventDefault();
+
     search();
   }
 
@@ -35,7 +37,7 @@ export default function Weather(props) {
     setCity(event.target.value);
   }
 
-  if (weatherData.ready) {
+  if (ready) {
     return (
       <div className="Weather">
         <form onSubmit={handleSubmit}>
