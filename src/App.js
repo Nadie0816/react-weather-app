@@ -13,9 +13,17 @@ export default function App() {
           <a
             href="https://github.com/Nadie0816/react-weather-app.git"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
           >
             open-sourced on Github
+          </a>{" "}
+          and{" "}
+          <a
+            href="https://boisterous-lollipop-9c376f.netlify.app"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            hosted on Netflify
           </a>
         </footer>
       </div>
